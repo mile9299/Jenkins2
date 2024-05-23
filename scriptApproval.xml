@@ -1,0 +1,76 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<scriptApproval plugin="script-security@1313.v7a_6067dc7087">
+  <approvedScriptHashes>
+    <string>SHA512:18333fb857cfdc379c44e78335d830c523f18bb149cd3dfed702825e7057b163998268fc5456c149ef632005b8f431a3dcc5fd8a25d1316780aad72da23874b4</string>
+    <string>SHA512:19c33a939b7554d118c60a9ca319df2d35c3d9500bdb82de51d80f960fe24370c0eff476cd426be79f62262798e2f63b9e7b33af54d9d5ceef2369611ed30745</string>
+    <string>SHA512:29ad33452488084b56d09e3bf08a01394c3d03e2200dc91f6bd9558ea905921602e533d8b4b6b44916268ac9d7747374c0c26028eeee071b5c1619ff952a17a0</string>
+    <string>SHA512:7bf52fe93d4bc96d35d5828fa29628c9b89072aebdc5122a9b7d59ec453bbf0a7eac498d8c6cfe150f6629266b6a5685a584cf4ffca63062de9dc850cfa7d755</string>
+    <string>SHA512:cb0d81170062453950ecce6bb066399d96af18f1640fe94b4a17fc3fe5717c4f3fedd6ab38c3937764cb624b0951291595800cbde5d68dbad28dfff222f77062</string>
+    <string>SHA512:d965b9cfe1c370bdeab3c152f1a98a1f3fab08c3782679b37dfaa583584b4e46a5ce5fac1a700d64655abec49e890290f32776500a814bcdfdf7d62087706c8f</string>
+    <string>SHA512:da1d1d779d5ea287a75bf444c980d1103d1776adcd543a9b595db11973cc60d367b3a96ab37ea9b8ea6ecffe920c5e35596b339167abb001e882ef79f81611a2</string>
+    <string>SHA512:dd9c7b6e64b048c37d596dab3e8e86b7e413e86c06c2e9c4baf86050d66a07a87e97be9f01bb3b50ddf9d14c65c20d5b1328c41fdcc87d2788e7e4ca0aa85cea</string>
+    <string>SHA512:e006cb3aa27497613f018f7845b5e97282decdb6654dd31f3efb6b54126c5f178a1ec99b5380b10407144da04d0ae2f8655308a6636fb1550bf8db935e72642f</string>
+    <string>SHA512:e127a86d4cbd1276b89fb31ef9cd4d1d2543bbc77770fd229b94a65f638d05ea0616519853d4d397bf0c4beb68b43287582bf089270e5c4291e8b983cd080cc7</string>
+    <string>SHA512:efbd71b0a312241d7fe2e4f128dca36bc837728550560b56d048c5cd0e4ef3b29760201da006f838b2b885aacfd27938bbdae07d8364cd1f3281d89dce9b5ec6</string>
+    <string>SHA512:f915352afc820df0aa4de06355ce25fc9e3171efeb61437cedfd90d5b308af8249252de8503e8509766a539646e420c16573e9ac51b830e68ce84e0a0c7cc8e5</string>
+  </approvedScriptHashes>
+  <approvedSignatures/>
+  <aclApprovedSignatures/>
+  <approvedClasspathEntries/>
+  <pendingScripts>
+    <pendingScript>
+      <context>
+        <user>mile</user>
+      </context>
+      <script></script>
+      <language>groovy</language>
+    </pendingScript>
+    <pendingScript>
+      <context>
+        <user>mile</user>
+        <item>Jfrog Dev Example</item>
+        <key>Jfrog Dev Example</key>
+      </context>
+      <script>pipeline {
+    agent any
+
+    stages {
+        stage (&apos;Artifactory configuration&apos;) {
+            steps {
+                rtServer (
+                    id: &quot;ARTIFACTORY_SERVER&quot;,
+                    url: SERVER_URL,
+                    credentialsId: CREDENTIALS
+                )
+            }
+        }
+
+        stage (&apos;Pull an image from Artifactory&apos;) {
+            steps {
+                rtDockerPull(
+                    serverId: &quot;ARTIFACTORY_SERVER&quot;,
+                    image: ARTIFACTORY_DOCKER_REGISTRY + &apos;/hello-world:latest&apos;,
+                    // Host:
+                    // On OSX: &quot;tcp://127.0.0.1:1234&quot;
+                    // On Linux can be omitted or null
+                    host: HOST_NAME,
+                    sourceRepo: &apos;docker-remote&apos;,
+                )
+            }
+        }
+
+        stage (&apos;Publish build info&apos;) {
+            steps {
+                rtPublishBuildInfo (
+                    serverId: &quot;ARTIFACTORY_SERVER&quot;
+                )
+            }
+        }
+    }
+}</script>
+      <language>groovy</language>
+    </pendingScript>
+  </pendingScripts>
+  <pendingSignatures/>
+  <pendingClasspathEntries/>
+</scriptApproval>

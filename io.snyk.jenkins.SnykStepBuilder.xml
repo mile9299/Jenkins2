@@ -1,0 +1,25 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<io.snyk.jenkins.SnykStepBuilder_-SnykStepBuilderDescriptor plugin="snyk-security-scanner@4.0.2">
+  <installations>
+    <io.snyk.jenkins.tools.SnykInstallation>
+      <name>snyk-manual</name>
+      <home>/var/lib/jenkins/tools/io.snyk.jenkins.tools.SnykInstallation/snyk_latest</home>
+      <properties/>
+    </io.snyk.jenkins.tools.SnykInstallation>
+    <io.snyk.jenkins.tools.SnykInstallation>
+      <name>snyk@latest</name>
+      <home></home>
+      <properties>
+        <hudson.tools.InstallSourceProperty>
+          <installers>
+            <io.snyk.jenkins.tools.SnykInstaller>
+              <version>latest</version>
+              <updatePolicyIntervalHours>24</updatePolicyIntervalHours>
+              <platform>AUTO</platform>
+            </io.snyk.jenkins.tools.SnykInstaller>
+          </installers>
+        </hudson.tools.InstallSourceProperty>
+      </properties>
+    </io.snyk.jenkins.tools.SnykInstallation>
+  </installations>
+</io.snyk.jenkins.SnykStepBuilder_-SnykStepBuilderDescriptor>

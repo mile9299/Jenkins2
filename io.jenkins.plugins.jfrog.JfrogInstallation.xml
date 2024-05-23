@@ -1,0 +1,20 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<io.jenkins.plugins.jfrog.JfrogInstallation_-DescriptorImpl plugin="jfrog@1.5.0">
+  <installations class="io.jenkins.plugins.jfrog.JfrogInstallation-array">
+    <io.jenkins.plugins.jfrog.JfrogInstallation>
+      <name>jfrog-cli</name>
+      <home></home>
+      <properties>
+        <hudson.tools.InstallSourceProperty>
+          <installers>
+            <io.jenkins.plugins.jfrog.ReleasesInstaller>
+              <serverId></serverId>
+              <repository>jfrog-cli</repository>
+              <version></version>
+            </io.jenkins.plugins.jfrog.ReleasesInstaller>
+          </installers>
+        </hudson.tools.InstallSourceProperty>
+      </properties>
+    </io.jenkins.plugins.jfrog.JfrogInstallation>
+  </installations>
+</io.jenkins.plugins.jfrog.JfrogInstallation_-DescriptorImpl>
